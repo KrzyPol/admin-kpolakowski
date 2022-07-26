@@ -21,7 +21,7 @@
         <object>Category__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
-        <objectPermissions>
+    <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>
         <allowEdit>true</allowEdit>
@@ -60,7 +60,7 @@
         <tab>Product__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
-       <tabSettings>
+    <tabSettings>
         <tab>Order__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>

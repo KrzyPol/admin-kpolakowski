@@ -3,10 +3,7 @@
     <fullName>Archived_status_only_after_active</fullName>
     <active>true</active>
     <description>Only active status can be archived</description>
-    <errorConditionFormula>/*(TEXT(PRIORVALUE( Status__c )) = &apos;Archived&apos;  &amp;&amp;   NOT(ISPICKVAL(Status__c, &apos;Archived&apos;)))
-*/
-  
-(TEXT(PRIORVALUE( Status__c )) = &apos;Draft&apos;  &amp;&amp;   (ISPICKVAL(Status__c, &apos;Archived&apos;)))</errorConditionFormula>
+    <errorConditionFormula>(TEXT(PRIORVALUE( Status__c ))  &lt;&gt;  &apos;Active&apos;  &amp;&amp;   (ISPICKVAL(Status__c, &apos;Archived&apos;)))</errorConditionFormula>
     <errorDisplayField>Status__c</errorDisplayField>
     <errorMessage>Only active status can be change to Archived</errorMessage>
 </ValidationRule>

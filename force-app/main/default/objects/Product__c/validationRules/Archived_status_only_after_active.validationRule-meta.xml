@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Archived_status_only_after_active</fullName>
-    <active>true</active>
-    <description>Only active status can be archived</description>
-    <errorConditionFormula>NOT (ISPICKVAL(PRIORVALUE(Status__c), &apos;Active&apos;))  &amp;&amp;   (ISPICKVAL(Status__c, &apos;Archived&apos;))</errorConditionFormula>
-    <errorDisplayField>Status__c</errorDisplayField>
-    <errorMessage>Only active status can be change to Archived</errorMessage>
-</ValidationRule>

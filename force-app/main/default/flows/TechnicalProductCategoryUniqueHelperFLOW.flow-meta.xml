@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <description>Unique pairs: Product_c + Category_c</description>
+    <formulas>
+        <description>value Product__c+Category__c</description>
+        <name>Formula_Category_plus_product</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Category__r.Id} + {!$Record.Product__r.Id}</expression>
+    </formulas>
+    <interviewLabel>TechnicalProductCategoryUniqueHelperFLOW {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>TechnicalProductCategoryUniqueHelperFLOW</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>UpdateTechnicalProductCategoryUniqueHelper</name>
+        <label>Update_TechnicalProductCategoryUniqueHelper__c</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <inputAssignments>
+            <field>TechnicalProductCategoryUniqueHelper__c</field>
+            <value>
+                <elementReference>Formula_Category_plus_product</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>UpdateTechnicalProductCategoryUniqueHelper</targetReference>
+        </connector>
+        <object>ProductCategory__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

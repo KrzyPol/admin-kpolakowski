@@ -6,7 +6,7 @@
         <description>value Product__c+Category__c</description>
         <name>Formula_Category_plus_product</name>
         <dataType>String</dataType>
-        <expression>{!$Record.Category__r.Id} + {!$Record.Product__r.Id}</expression>
+        <expression>{!$Record.Category__c} + {!$Record.Product__c}</expression>
     </formulas>
     <interviewLabel>TechnicalProductCategoryUniqueHelperFLOW {!$Flow.CurrentDateTime}</interviewLabel>
     <label>TechnicalProductCategoryUniqueHelperFLOW</label>
@@ -52,5 +52,5 @@
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>

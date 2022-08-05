@@ -155,8 +155,9 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>ProductCategory</label>
     <nameField>
+        <displayFormat>A-{0000}</displayFormat>
         <label>ProductCategory Name</label>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>ProductCategories</pluralLabel>
     <searchLayouts></searchLayouts>

@@ -11,6 +11,10 @@
                 <behavior>Required</behavior>
                 <field>Name</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Status__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -102,6 +106,10 @@
         <fields>CASES.CREATED_DATE</fields>
         <fields>CASES.PRIORITY</fields>
         <relatedList>Case.Order__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>OrderLineItem__c.Order__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

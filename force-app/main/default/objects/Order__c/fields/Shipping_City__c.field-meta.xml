@@ -3,7 +3,7 @@
     <fullName>Shipping_City__c</fullName>
     <externalId>false</externalId>
     <label>Shipping City</label>
-    <length>70</length>
+    <length>40</length>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Text</type>

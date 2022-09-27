@@ -116,6 +116,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Order__c.Payment_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Order__c.Shipping_City__c</field>
         <readable>true</readable>
     </fieldPermissions>

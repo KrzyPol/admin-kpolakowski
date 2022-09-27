@@ -54,7 +54,7 @@
         <style>CustomLinks</style>
     </layoutSections>
     <relatedLists>
-        <fields>NAME</fields>
+        <fields>Product__c.NAME</fields>
         <relatedList>ProductCategory__c.Category__c</relatedList>
     </relatedLists>
     <relatedLists>

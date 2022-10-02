@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "b2ae9a63-dc10-4600-a750-86bfe2e90225",
+  "appPageId" : "a8045c03-7cbe-4bd5-8934-2b81ca135f83",
+  "configurationTags" : [ ],
+  "id" : "f3b8f82a-8aaa-4e51-a02f-52b3ca6db0b9",
+  "label" : "Product Related List",
+  "objectApiName" : "Product__c",
+  "routeType" : "relatedlist-a01",
+  "type" : "route",
+  "urlPrefix" : "product"
+}

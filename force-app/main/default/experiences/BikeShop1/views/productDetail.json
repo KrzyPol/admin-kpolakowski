@@ -6,9 +6,9 @@
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : {
-        "flowArguments" : "",
+        "flowArguments" : "[{\"label\":\"ProductRecordId\",\"dataType\":\"SObject\",\"supportsRecordId\":true,\"value\":\"{!Record.Id}\"}]",
         "flowLayout" : "oneColumn",
-        "flowName" : "ProductToCartFlowLJC224"
+        "flowName" : "AddProductToCartFlow"
       },
       "componentName" : "forceCommunity:flowCommunity",
       "id" : "1cf761e0-66aa-4fff-a120-0ea8b3482849",

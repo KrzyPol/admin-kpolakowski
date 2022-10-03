@@ -26,8 +26,8 @@
             <label>HasCart</label>
         </rules>
     </decisions>
-    <interviewLabel>ProductToCartFlowLJC224 {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>ProductToCartFlowLJC224</label>
+    <interviewLabel>AddProductToCartFlow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>AddProductToCartFlow</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -87,7 +87,7 @@
         <inputAssignments>
             <field>Product__c</field>
             <value>
-                <elementReference>GetPorduct.Id</elementReference>
+                <elementReference>ProductRecordId.Id</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -116,7 +116,7 @@
         <inputAssignments>
             <field>Product__c</field>
             <value>
-                <elementReference>GetPorduct.Id</elementReference>
+                <elementReference>ProductRecordId.Id</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -143,6 +143,13 @@
             <operator>EqualTo</operator>
             <value>
                 <elementReference>$User.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Draft</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -213,4 +220,12 @@
         </connector>
     </start>
     <status>Active</status>
+    <variables>
+        <name>ProductRecordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Product__c</objectType>
+    </variables>
 </Flow>

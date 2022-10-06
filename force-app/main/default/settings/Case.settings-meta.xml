@@ -32,8 +32,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>krzysztof1waw@gmail.com</emailAddress>
-            <emailServicesAddress>krzysztof1waw@2sya9bcbu7r4axer1buo7tust83oanksa0425wqqmnda7vydvp.7q-6g6ohuas.eu44.case.salesforce.com</emailServicesAddress>
-            <isVerified>true</isVerified>
             <routingName>krzysztof1waw@gmail.com</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -66,7 +64,7 @@
     <visibleInCssCheckbox>false</visibleInCssCheckbox>
     <webToCase>
         <caseOrigin>Web</caseOrigin>
-        <defaultResponseTemplate>unfiled$public/SupportCaseCreatedWebInquiries</defaultResponseTemplate>
+        <defaultResponseTemplate>unfiled$public/CaseCreatedEmailTemplate1</defaultResponseTemplate>
         <enableWebToCase>true</enableWebToCase>
     </webToCase>
 </CaseSettings>

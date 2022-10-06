@@ -1,0 +1,4 @@
+Thank you for contacting us.
+Your case has received number:  {!Case.CaseNumber} 
+The case will be dealt with by {!Case.OwnerFullName}
+Have a great day.

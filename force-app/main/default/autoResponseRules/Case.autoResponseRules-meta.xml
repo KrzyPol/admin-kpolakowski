@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AutoResponseRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <autoResponseRule>
+        <fullName>CaseCreatedAutoResponse</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>mr.polakowski@gmail.com</senderEmail>
+            <senderName>Krzysztof</senderName>
+            <template>unfiled$public/CaseCreatedEmailTemplate1</template>
+        </ruleEntry>
+    </autoResponseRule>
+</AutoResponseRules>

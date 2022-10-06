@@ -5,7 +5,7 @@
         <name>DecisionHasCart</name>
         <label>DecisionHasCart</label>
         <locationX>182</locationX>
-        <locationY>518</locationY>
+        <locationY>398</locationY>
         <defaultConnector>
             <targetReference>CartCreate</targetReference>
         </defaultConnector>
@@ -51,7 +51,7 @@
         <name>CartCreate</name>
         <label>CartCreate</label>
         <locationX>314</locationX>
-        <locationY>638</locationY>
+        <locationY>518</locationY>
         <connector>
             <targetReference>CartLineItemCration1</targetReference>
         </connector>
@@ -74,7 +74,7 @@
         <name>CartLineItemCration0</name>
         <label>CartLineItemCration0</label>
         <locationX>50</locationX>
-        <locationY>638</locationY>
+        <locationY>518</locationY>
         <connector>
             <targetReference>Productadded</targetReference>
         </connector>
@@ -103,7 +103,7 @@
         <name>CartLineItemCration1</name>
         <label>CartLineItemCration1</label>
         <locationX>314</locationX>
-        <locationY>758</locationY>
+        <locationY>638</locationY>
         <connector>
             <targetReference>Productadded</targetReference>
         </connector>
@@ -135,7 +135,7 @@
         <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>GetPorduct</targetReference>
+            <targetReference>DecisionHasCart</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -154,19 +154,6 @@
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Cart__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>GetPorduct</name>
-        <label>GetPorduct</label>
-        <locationX>182</locationX>
-        <locationY>398</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>DecisionHasCart</targetReference>
-        </connector>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Product__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <screens>
@@ -199,7 +186,7 @@
         <name>Productadded</name>
         <label>Productadded</label>
         <locationX>182</locationX>
-        <locationY>974</locationY>
+        <locationY>854</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>

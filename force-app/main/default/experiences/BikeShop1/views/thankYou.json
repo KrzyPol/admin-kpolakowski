@@ -1,0 +1,47 @@
+{
+  "appPageId" : "a8045c03-7cbe-4bd5-8934-2b81ca135f83",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "id" : "012eaeda-adf4-4272-8e4e-c2e48ec971a1",
+  "label" : "Thank You",
+  "regions" : [ {
+    "id" : "048c2b6d-53af-4567-ae13-39d42da2d3a8",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<p><span style=\"font-size: 18px;\"><span class=\"ql-cursor\">﻿</span>Thank you!</span></p>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "f367761a-8c7c-48b7-9b8a-24fe4fadae34",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6d6b82e5-8090-4ed3-a81c-537acac3ba4e",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "03a098f7-c28b-41d6-8f93-43b1c93177e8",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Thank You"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "7eda0c79-3230-457f-a9e0-ffc3d4f4b360",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "556ae98f-6078-4aa6-9965-da6d003fa587",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-thank-you"
+}

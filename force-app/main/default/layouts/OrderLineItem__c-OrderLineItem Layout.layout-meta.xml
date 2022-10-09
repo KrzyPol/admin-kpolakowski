@@ -38,6 +38,14 @@
                 <behavior>Readonly</behavior>
                 <field>Total_Net_Price__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>VATRate__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Total_Gross_Price__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>

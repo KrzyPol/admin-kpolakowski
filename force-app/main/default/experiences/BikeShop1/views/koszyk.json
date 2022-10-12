@@ -1,0 +1,48 @@
+{
+  "appPageId" : "a8045c03-7cbe-4bd5-8934-2b81ca135f83",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "id" : "85c95596-6e0e-4970-8649-eb63f2182d1b",
+  "label" : "Koszyk",
+  "regions" : [ {
+    "id" : "5579ea8c-cf74-440d-86ed-c3bb82a91278",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "flowArguments" : "",
+        "flowName" : "CartFlow"
+      },
+      "componentName" : "forceCommunity:flowCommunity",
+      "id" : "eb836a51-3301-4fc5-be47-498553ccce80",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e84bb089-b1df-4d9d-80a6-65dbdfdc415e",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "38a7cf95-6ce3-48ce-aab3-0acb5e863cfa",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Koszyk"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "ddf99f56-a27a-464f-9111-88b7114086f2",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "904cd895-07ab-4896-8ca1-7b04a57d9269",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-koszyk"
+}

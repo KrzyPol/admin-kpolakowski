@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "85c95596-6e0e-4970-8649-eb63f2182d1b",
+  "appPageId" : "a8045c03-7cbe-4bd5-8934-2b81ca135f83",
+  "configurationTags" : [ ],
+  "id" : "f648b805-0f8b-4540-b79f-42893fb61037",
+  "label" : "Koszyk",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-koszyk",
+  "type" : "route",
+  "urlPrefix" : "koszyk"
+}

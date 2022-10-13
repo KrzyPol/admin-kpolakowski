@@ -4,8 +4,8 @@
     <assignments>
         <name>vCart1</name>
         <label>vCart1</label>
-        <locationX>176</locationX>
-        <locationY>398</locationY>
+        <locationX>50</locationX>
+        <locationY>518</locationY>
         <assignmentItems>
             <assignToReference>CartItemFields</assignToReference>
             <operator>Assign</operator>
@@ -20,8 +20,8 @@
     <assignments>
         <name>vCart2</name>
         <label>vCart2</label>
-        <locationX>176</locationX>
-        <locationY>638</locationY>
+        <locationX>50</locationX>
+        <locationY>758</locationY>
         <assignmentItems>
             <assignToReference>CartItemFields</assignToReference>
             <operator>Assign</operator>
@@ -33,6 +33,28 @@
             <targetReference>UpdateQty</targetReference>
         </connector>
     </assignments>
+    <decisions>
+        <name>CartwItems</name>
+        <label>CartwItems</label>
+        <locationX>182</locationX>
+        <locationY>398</locationY>
+        <defaultConnector>
+            <targetReference>NoItems</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>CartIsEmpty</defaultConnectorLabel>
+        <rules>
+            <name>HasItem</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetCart</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>vCart1</targetReference>
+            </connector>
+            <label>HasItem</label>
+        </rules>
+    </decisions>
     <interviewLabel>CartFlow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CartFlow</label>
     <processMetadataValues>
@@ -57,7 +79,7 @@
     <recordLookups>
         <name>GetCart</name>
         <label>GetCart</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -85,11 +107,11 @@
     <recordLookups>
         <name>GetItems</name>
         <label>GetItems</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>vCart1</targetReference>
+            <targetReference>CartwItems</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -106,18 +128,21 @@
     <recordUpdates>
         <name>UpdateQty</name>
         <label>UpdateQty</label>
-        <locationX>176</locationX>
-        <locationY>758</locationY>
+        <locationX>50</locationX>
+        <locationY>878</locationY>
+        <connector>
+            <targetReference>CartUpdatedSuccess</targetReference>
+        </connector>
         <inputReference>CartItemFields</inputReference>
     </recordUpdates>
     <screens>
         <name>CartItems</name>
         <label>CartItems</label>
-        <locationX>176</locationX>
-        <locationY>518</locationY>
-        <allowBack>true</allowBack>
+        <locationX>50</locationX>
+        <locationY>638</locationY>
+        <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
+        <allowPause>false</allowPause>
         <connector>
             <targetReference>vCart2</targetReference>
         </connector>
@@ -235,11 +260,45 @@
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
+        <nextOrFinishButtonLabel>Save Cart</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>CartUpdatedSuccess</name>
+        <label>CartUpdatedSuccess</label>
+        <locationX>50</locationX>
+        <locationY>998</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Success</name>
+            <fieldText>&lt;p&gt;Cart has been successfully updated!&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <nextOrFinishButtonLabel>OK</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>NoItems</name>
+        <label>NoItems</label>
+        <locationX>314</locationX>
+        <locationY>518</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>AddItems</name>
+            <fieldText>&lt;p&gt;Your shopping cart is empty. Add a product.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>50</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>GetCart</targetReference>

@@ -2,10 +2,70 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>56.0</apiVersion>
     <assignments>
+        <name>AddNewOrderLineItem</name>
+        <label>AddNewOrderLineItem</label>
+        <locationX>138</locationX>
+        <locationY>1598</locationY>
+        <assignmentItems>
+            <assignToReference>NewOrderLineItems</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>NewOrderlLineItem</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>OrderLineLoop</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>OrderLineItemAssignment</name>
+        <label>OrderLineItemAssignment</label>
+        <locationX>138</locationX>
+        <locationY>1478</locationY>
+        <assignmentItems>
+            <assignToReference>NewOrderlLineItem.Discount__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OrderLineLoop.Discount__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewOrderlLineItem.Order__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Order1.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewOrderlLineItem.Product__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OrderLineLoop.Product__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewOrderlLineItem.Quantity__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OrderLineLoop.Quantity__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewOrderlLineItem.VATRate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OrderLineLoop.Product__r.DefaultVatRate__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AddNewOrderLineItem</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>vCart1</name>
         <label>vCart1</label>
-        <locationX>50</locationX>
-        <locationY>518</locationY>
+        <locationX>182</locationX>
+        <locationY>638</locationY>
         <assignmentItems>
             <assignToReference>CartItemFields</assignToReference>
             <operator>Assign</operator>
@@ -20,8 +80,8 @@
     <assignments>
         <name>vCart2</name>
         <label>vCart2</label>
-        <locationX>50</locationX>
-        <locationY>758</locationY>
+        <locationX>314</locationX>
+        <locationY>998</locationY>
         <assignmentItems>
             <assignToReference>CartItemFields</assignToReference>
             <operator>Assign</operator>
@@ -36,8 +96,8 @@
     <decisions>
         <name>CartwItems</name>
         <label>CartwItems</label>
-        <locationX>182</locationX>
-        <locationY>398</locationY>
+        <locationX>380</locationX>
+        <locationY>518</locationY>
         <defaultConnector>
             <targetReference>NoItems</targetReference>
         </defaultConnector>
@@ -55,8 +115,44 @@
             <label>HasItem</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>MakeOrder12</name>
+        <label>MakeOrder</label>
+        <locationX>182</locationX>
+        <locationY>878</locationY>
+        <defaultConnector>
+            <targetReference>vCart2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>UpdateProductsQty</defaultConnectorLabel>
+        <rules>
+            <name>MakeOrder1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MakeOrder.value</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>NewOrderData</targetReference>
+            </connector>
+            <label>MakeOrder</label>
+        </rules>
+    </decisions>
     <interviewLabel>CartFlow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CartFlow</label>
+    <loops>
+        <name>OrderLineLoop</name>
+        <label>OrderLineLoop</label>
+        <locationX>50</locationX>
+        <locationY>1358</locationY>
+        <collectionReference>GetItems</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>OrderLineItemAssignment</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>CreateOrderLineItems</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -76,10 +172,133 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
+    <recordCreates>
+        <name>CreateOrderLineItems</name>
+        <label>CreateOrderLineItems</label>
+        <locationX>50</locationX>
+        <locationY>1814</locationY>
+        <connector>
+            <targetReference>OrderCreated</targetReference>
+        </connector>
+        <inputReference>NewOrderLineItems</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <name>NewOrderRecord</name>
+        <label>NewOrderRecord</label>
+        <locationX>50</locationX>
+        <locationY>1118</locationY>
+        <connector>
+            <targetReference>Order1</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Billing_City__c</field>
+            <value>
+                <elementReference>BillingStreet1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Company_Name__c</field>
+            <value>
+                <elementReference>BillingCompanyName1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Country__c</field>
+            <value>
+                <elementReference>BillingCountry1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_First_Name__c</field>
+            <value>
+                <elementReference>BillingFirstName1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Last_Name__c</field>
+            <value>
+                <elementReference>BillingLastName1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Postal_Code__c</field>
+            <value>
+                <elementReference>BillingPostalCode1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Street__c</field>
+            <value>
+                <elementReference>BillingStreet1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_VAT_Number__c</field>
+            <value>
+                <elementReference>BillingVATNumber1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Shipping_City__c</field>
+            <value>
+                <elementReference>ShippingCity1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Shipping_Country__c</field>
+            <value>
+                <elementReference>ShippingCountry1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Shipping_Email__c</field>
+            <value>
+                <elementReference>ShippingEmail1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Shipping_First_Name__c</field>
+            <value>
+                <elementReference>ShippingFirstName1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Shipping_Last_Name__c</field>
+            <value>
+                <elementReference>ShippingLastName1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Shipping_Phone__c</field>
+            <value>
+                <elementReference>ShippingPhone1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Shipping_Postal_Code__c</field>
+            <value>
+                <elementReference>ShippingPostalCode1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Shipping_Street__c</field>
+            <value>
+                <elementReference>ShippingStreet1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Draft</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Order__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordLookups>
         <name>GetCart</name>
         <label>GetCart</label>
-        <locationX>182</locationX>
+        <locationX>380</locationX>
         <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -107,11 +326,11 @@
     <recordLookups>
         <name>GetItems</name>
         <label>GetItems</label>
-        <locationX>182</locationX>
+        <locationX>380</locationX>
         <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>CartwItems</targetReference>
+            <targetReference>UserData</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -125,11 +344,55 @@
         <object>CartLineItem__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>Order1</name>
+        <label>Order1</label>
+        <locationX>50</locationX>
+        <locationY>1238</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>OrderLineLoop</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OwnerId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Order__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>UserData</name>
+        <label>UserData</label>
+        <locationX>380</locationX>
+        <locationY>398</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>CartwItems</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <name>UpdateQty</name>
         <label>UpdateQty</label>
-        <locationX>50</locationX>
-        <locationY>878</locationY>
+        <locationX>314</locationX>
+        <locationY>1118</locationY>
         <connector>
             <targetReference>CartUpdatedSuccess</targetReference>
         </connector>
@@ -138,13 +401,13 @@
     <screens>
         <name>CartItems</name>
         <label>CartItems</label>
-        <locationX>50</locationX>
-        <locationY>638</locationY>
+        <locationX>182</locationX>
+        <locationY>758</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>vCart2</targetReference>
+            <targetReference>MakeOrder12</targetReference>
         </connector>
         <fields>
             <name>CartLine</name>
@@ -260,6 +523,44 @@
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
+        <fields>
+            <name>MakeOrder</name>
+            <extensionName>c:fsc_flowButtonBar</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>alignment</name>
+                <value>
+                    <stringValue>center</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>orientation</name>
+                <value>
+                    <stringValue>horizontal</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>showLines</name>
+                <value>
+                    <stringValue>neither</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>actionMode</name>
+                <value>
+                    <stringValue>navigation</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>buttons</name>
+                <value>
+                    <stringValue>[{&quot;label&quot;:&quot;Make Order &quot;,&quot;value&quot;:&quot;MakeOrder1&quot;,&quot;iconPosition&quot;:&quot;left&quot;,&quot;variant&quot;:&quot;brand&quot;,&quot;iconName&quot;:&quot;utility:work_order_type&quot;,&quot;index&quot;:0}]</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
         <nextOrFinishButtonLabel>Save Cart</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
@@ -267,8 +568,8 @@
     <screens>
         <name>CartUpdatedSuccess</name>
         <label>CartUpdatedSuccess</label>
-        <locationX>50</locationX>
-        <locationY>998</locationY>
+        <locationX>314</locationX>
+        <locationY>1238</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -282,10 +583,238 @@
         <showHeader>false</showHeader>
     </screens>
     <screens>
+        <name>NewOrderData</name>
+        <label>NewOrderData</label>
+        <locationX>50</locationX>
+        <locationY>998</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>NewOrderRecord</targetReference>
+        </connector>
+        <fields>
+            <name>BillingData</name>
+            <fieldText>Billing Address</fieldText>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>BillingData_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>BillingCompanyName1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.CompanyName</elementReference>
+                    </defaultValue>
+                    <fieldText>Billing Company Name</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>BillingFirstName1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.FirstName</elementReference>
+                    </defaultValue>
+                    <fieldText>Billing First Name</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>BillingLastName1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.LastName</elementReference>
+                    </defaultValue>
+                    <fieldText>Billing Last Name</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>BillingVATNumber1</name>
+                    <dataType>String</dataType>
+                    <fieldText>Billing VAT Number</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>false</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>BillingData_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>BillingStreet1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.Street</elementReference>
+                    </defaultValue>
+                    <fieldText>Billing Street</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>BillingPostalCode1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.PostalCode</elementReference>
+                    </defaultValue>
+                    <fieldText>Billing Postal Code</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>BillingCity1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.City</elementReference>
+                    </defaultValue>
+                    <fieldText>Billing City</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>BillingCountry1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.Country</elementReference>
+                    </defaultValue>
+                    <fieldText>Billing Country</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Shipping_Adress</name>
+            <fieldText>Shipping Address</fieldText>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Shipping_Adress_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>ShippingLastName1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.LastName</elementReference>
+                    </defaultValue>
+                    <fieldText>Shipping Last Name</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>ShippingFirstName1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.FirstName</elementReference>
+                    </defaultValue>
+                    <fieldText>Shipping First Name</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>ShippingEmail1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.Email</elementReference>
+                    </defaultValue>
+                    <fieldText>Shipping Email</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>ShippingPhone1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.Phone</elementReference>
+                    </defaultValue>
+                    <fieldText>Shipping Phone</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Shipping_Adress_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>ShippingStreet1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.Street</elementReference>
+                    </defaultValue>
+                    <fieldText>Shipping Street</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>ShippingPostalCode1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.PostalCode</elementReference>
+                    </defaultValue>
+                    <fieldText>Shipping Postal Code</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>ShippingCity1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.City</elementReference>
+                    </defaultValue>
+                    <fieldText>Shipping City</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>ShippingCountry1</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>UserData.Country</elementReference>
+                    </defaultValue>
+                    <fieldText>Shipping Country</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+        </fields>
+        <nextOrFinishButtonLabel>Order</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
         <name>NoItems</name>
         <label>NoItems</label>
-        <locationX>314</locationX>
-        <locationY>518</locationY>
+        <locationX>578</locationX>
+        <locationY>638</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -297,8 +826,25 @@
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
+    <screens>
+        <name>OrderCreated</name>
+        <label>OrderCreated</label>
+        <locationX>50</locationX>
+        <locationY>1934</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>OrderOK</name>
+            <fieldText>&lt;p&gt;The order has been accepted for further proceedings. Please wait for an e-mail with more informations.  Thank you! &lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <nextOrFinishButtonLabel>OK</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
     <start>
-        <locationX>56</locationX>
+        <locationX>254</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>GetCart</targetReference>
@@ -312,5 +858,21 @@
         <isInput>false</isInput>
         <isOutput>true</isOutput>
         <objectType>CartLineItem__c</objectType>
+    </variables>
+    <variables>
+        <name>NewOrderLineItems</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OrderLineItem__c</objectType>
+    </variables>
+    <variables>
+        <name>NewOrderlLineItem</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OrderLineItem__c</objectType>
     </variables>
 </Flow>

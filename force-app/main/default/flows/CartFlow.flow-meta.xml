@@ -137,6 +137,7 @@
             <label>MakeOrder</label>
         </rules>
     </decisions>
+    <description>CartStatusConverted</description>
     <interviewLabel>CartFlow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CartFlow</label>
     <loops>
@@ -178,7 +179,7 @@
         <locationX>50</locationX>
         <locationY>1814</locationY>
         <connector>
-            <targetReference>OrderCreated</targetReference>
+            <targetReference>CartStatusConverted</targetReference>
         </connector>
         <inputReference>NewOrderLineItems</inputReference>
     </recordCreates>
@@ -388,6 +389,30 @@
         <object>User</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordUpdates>
+        <name>CartStatusConverted</name>
+        <label>CartStatusConverted</label>
+        <locationX>50</locationX>
+        <locationY>1934</locationY>
+        <connector>
+            <targetReference>OrderCreated</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>GetCart.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Converted</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Cart__c</object>
+    </recordUpdates>
     <recordUpdates>
         <name>UpdateQty</name>
         <label>UpdateQty</label>
@@ -830,7 +855,7 @@
         <name>OrderCreated</name>
         <label>OrderCreated</label>
         <locationX>50</locationX>
-        <locationY>1934</locationY>
+        <locationY>2054</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>

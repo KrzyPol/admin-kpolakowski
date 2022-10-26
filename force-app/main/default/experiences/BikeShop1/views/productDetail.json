@@ -7,7 +7,6 @@
     "components" : [ {
       "componentAttributes" : {
         "flowArguments" : "[{\"label\":\"ProductRecordId\",\"dataType\":\"SObject\",\"supportsRecordId\":true,\"value\":\"{!Record.Id}\"}]",
-        "flowLayout" : "oneColumn",
         "flowName" : "AddProductToCartFlow"
       },
       "componentName" : "forceCommunity:flowCommunity",

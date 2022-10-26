@@ -33,65 +33,10 @@
     "regionName" : "header",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "buttonAlignment" : "center",
-        "buttonBgColor" : "",
-        "buttonBgHoverColor" : "",
-        "buttonBorderColor" : "",
-        "buttonMaxWidth" : 100,
-        "buttonRadius" : 0,
-        "buttonTextColor" : "",
-        "buttonTextHoverColor" : "",
-        "confirmationMessage" : "Got it!",
-        "followUpPromptLabel" : "Can we close your question?",
-        "isAskFollowPromptEnabled" : true,
-        "isIncludeArticlesEnabled" : false,
-        "isIncludeDiscussionsEnabled" : true,
-        "isInitialSatisfactionPromptEnabled" : true,
-        "isPublisherDeflectionEnabled" : true,
-        "label" : "Ask a Question",
-        "maxSuggestions" : 5,
-        "satisfactionPromptLabel" : "Did we help to answer your question?",
-        "showDetails" : false,
-        "showTopics" : true,
-        "uneditableTopics" : false
-      },
-      "componentName" : "forceCommunity:askCommunity",
-      "id" : "aab56b30-b0ef-4177-b300-22bb5a5347c5",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "ff6a0ce3-bc6e-4c2c-93b0-637d6212e34b",
     "regionName" : "featured",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "defaultSortOrderCompactFeed" : "Relevance",
-        "defaultSortOrderFullFeed" : "Relevance",
-        "discussionTabLabel" : "Discussions",
-        "featuredTabLabel" : "Featured",
-        "maxWidth" : 100,
-        "myFeedTabLabel" : "My Feed",
-        "overlayColor" : "rgba(0,0,0,0.4)",
-        "overlayHoverColor" : "",
-        "radius" : 0,
-        "showCompactFeedInDiscussion" : true,
-        "textAlignment" : "center",
-        "textBgColor" : "rgba(0,0,0,0)",
-        "textBgHoverColor" : "rgba(0,0,0,0)",
-        "textColor" : "",
-        "textHoverColor" : "",
-        "textPosition" : "center center"
-      },
-      "componentName" : "forceCommunity:homeTabs",
-      "id" : "e70d185b-7d75-405d-a702-d169f42fd5db",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "88ee9322-c181-451b-8302-b307c7e0da81",
     "regionName" : "content",
     "type" : "region"
@@ -120,17 +65,6 @@
       },
       "componentName" : "forceCommunity:reputationLeaderboard42",
       "id" : "f2898eb9-6cdc-439b-adce-e2ec4ef9449e",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "numberOfTopics" : 5,
-        "showTopicsMetric" : true,
-        "title" : "Trending Topics"
-      },
-      "componentName" : "forceCommunity:trendingTopics",
-      "id" : "22938740-468a-47d3-a1b2-2cc3b4428539",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
